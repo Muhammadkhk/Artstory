@@ -1,0 +1,73 @@
+{% load static %}
+<header class="site-header container-fluid">
+    <div class="top-header">
+        <div class="logo col-md-6 col-sm-6">
+            <h1><a href="index.html"><em>Art</em>Story</a></h1>
+                    <span>write your story</span>
+        </div> <!-- /.logo -->
+        <div class="social-top col-md-6 col-sm-6">
+            <ul>
+                <li><a href="#" class="fa fa-facebook"></a></li>
+                <li><a href="#" class="fa fa-twitter"></a></li>
+                <li><a href="#" class="fa fa-linkedin"></a></li>
+                <li><a href="#" class="fa fa-google-plus"></a></li>
+                <li><a href="#" class="fa fa-flickr"></a></li>
+                <li><a href="#" class="fa fa-rss"></a></li>
+            </ul>
+        </div> <!-- /.social-top -->
+    </div> <!-- /.top-header -->
+    <div class="main-header">
+        <div class="row">
+            <div class="main-header-left col-md-3 col-sm-6 col-xs-8">
+                <!-- <a id="search-icon" class="btn-left fa fa-search" href="#search-overlay"></a>
+                <div id="search-overlay">
+                    <a href="#search-overlay" class="close-search"><i class="fa fa-times-circle"></i></a>
+                    <div class="search-form-holder">
+                        <h2>Type keywords and hit enter</h2>
+                        <form id="search-form" action="#">
+                            <input type="search" name="s" placeholder="" autocomplete="off" />
+                        </form>
+                    </div>
+                </div>#search-overlay -->
+                <a href="{%static 'images/slide3.jpg' %}" class="btn-left arrow-left fa fa-angle-left"></a>
+                <a href="{%static 'images/slide2.jpg' %}" class="btn-left arrow-right fa fa-angle-right"></a>
+            </div> <!-- /.main-header-left -->
+            <div class="menu-wrapper col-md-9 col-sm-6 col-xs-4">
+                <a href="#" class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></a>
+                <ul>
+                    <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                    <li><a href="http://127.0.0.1:8000/public">Public</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li><a href="http://127.0.0.1:8000/write">Write</a></li>
+                    <li><a href="http://127.0.0.1:8000/private">Private</a></li>
+                    {% endif %}
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="http://127.0.0.1:8000/singin">sing in</a></li>
+                    <li><a href="http://127.0.0.1:8000/singup">sing up</a></li>
+                    {% else %}
+                        <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+                        <li><a href="http://127.0.0.1:8000/profile">Profile</a></li>
+                        <li><a href="http://127.0.0.1:8000/singout">sing out</a></li>
+                    {% endif %}
+                
+                    
+                    
+                </ul>
+            </div> <!-- /.menu-wrapper -->
+        </div> <!-- /.row -->
+    </div> <!-- /.main-header -->
+    <!-- <div id="responsive-menu">
+        <ul>
+            <li><a href="http://127.0.0.1:8000/">Home</a></li>
+            {% if not request.user.is_authenticated %}
+            
+            {% else %}
+
+            {% endif %}
+        
+            <li><a href="our-team.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div> -->
+</header> <!-- /.site-header -->

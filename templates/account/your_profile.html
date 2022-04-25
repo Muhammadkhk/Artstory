@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>frinds_profile</title>
+        {% include 'shared/_HeaderReferences.html' %}
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>your Profile</h2>
+                        <span>welcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="our-team row">
+                    <div class="team-member col-md-6 col-sm-6">
+                        <img src="{{ site_profile.image.url }}" alt="">
+                        <div class="box-content">
+                            <h4 class="member-name">{{ site_profile.firstname }} &nbsp;{{ site_profile.lastname }}</h4>
+                            <span> {{ site_profile.slogan }}</span>
+                            <p>{{ site_profile.text }}</p>
+                            <p>{{ site_profile.email }}</p>   
+                        </div>
+                    
+                </div> <!-- /.our-team --> 
+ 
+                
+                </div> <!-- /.our-staff -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferencesdom.html' %}
+        
+    </body>
+</html>

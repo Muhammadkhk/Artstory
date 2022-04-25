@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>StoryDetail</title>
+        {% include 'shared/_HeaderReferences.html' %}
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>your story</h2>
+                        <span>wellcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="project-detail row">
+                    <div class="blog-image col-md-12">
+                        <img style="height: 700px;" src="{{ story_private.image.url }}" alt="">
+                    </div> <!-- /.project-slider -->
+                    <div class="project-infos col-md-12">
+                        <div class="box-content">
+                            <h2 class="project-title">{{ story_private.title }}</h2>
+                            <p>{{ story_private.text }}</p>
+                            <br>
+                            {% if request.user == story_private.author  %}
+                                <a style="background-color: black;padding: 1%;color: darkturquoise;border-radius: 5px;" class="btn" href="{% url 'editstory_detail_private' story_private.pk %}" role="button">Edit Story</a>
+                            {% endif %}
+                        </div>  <!--/.box-content -->
+                    </div> <!-- /.project-infos -->
+                </div> <!-- /.project-detail -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferencesdom.html' %}
+        
+    </body>
+</html>

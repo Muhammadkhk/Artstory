@@ -1,0 +1,97 @@
+{% load static %}
+{% load crispy_forms_tags %} 
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Writestor</title>
+        {% include 'shared/_HeaderReferences.html' %} 
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Edit Page</h2>
+                        <span>welcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="contact-form">
+                    <div class="box-content col-md-12">
+                        <div class="row">
+                            <div style="margin-left: 20%;" class="col-lg-12">
+                                
+                                <div class="contact-form-inner">
+                                    <form method="post" action="{% url 'editprofile' %}" name="contact" enctype="multipart/form-data" id="contactform">
+                                        {% csrf_token %}
+                                        <p>
+                                            <label for="title">Firstname:</label>
+                                            <input required minlength="4" name="firstname" type="text" id="firstname" value="{{profile.firstname}}">
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="title">Lastname:</label>
+                                            <input required minlength="4" name="lastname" type="text" id="lastname" value="{{profile.lastname}}">
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="title">Email:</label>
+                                            <input required minlength="4" name="email" type="email" id="email" value="{{profile.email}}">
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="title">Slogan:</label>
+                                            <input required minlength="4" name="slogan" type="text" id="slogan" value="{{profile.slogan}}">
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="text">About You:</label>
+                                            <textarea required minlength="4" style="width: 40%;" name="text" id="text" value="{{profile.text}}"></textarea>
+                                        </p>
+                                        <br>
+                                        <div style="margin-left: 25%;">
+                                            <div class="row margin-bottom-20">
+                                                <div class="col-md-8 col-md-offset-0">
+                                                    <input required type="file" name="image" accept="image/x-png,image/gif,image/jpeg">
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+
+                                        
+                                        <br>
+                                        <input type="submit" class="mainBtn" id="submit" value="Edit" />
+                                    </form>
+
+                                    <div class="container">
+                              
+                                    </div>
+                                  
+
+                                </div> <!-- /.contact-form-inner -->
+                                <div id="message"></div>
+                            </div> <!-- /.col-md-7 -->
+                            
+                        </div> <!-- /.row -->
+                    </div> <!-- /.box-content -->
+                </div> <!-- /.contact-form -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferences.html' %} 
+
+    </body>
+</html>

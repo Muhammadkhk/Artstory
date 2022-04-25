@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>sing-up</title>
+        {% include 'shared/_HeaderReferences.html' %} 
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper;text-center">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Sing up Page</h2>
+                        &nbsp&nbsp
+                        <span>welcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="contact-form">
+                    <div class="box-content col-md-12">
+                        <div class="row">
+                            <div style="margin-left: 20%;" class="col-lg-12">
+                                
+                                <div class="contact-form-inner">
+                                    <form method="post" action="{% url 'singup_user' %}" name="singup_user" id="contactform">
+                                        {% csrf_token %}
+                                        <p>
+                                            <label for="name">Uesr Name:</label>
+                                            <input required minlength="4" name="username" type="text" id="name">
+                                            {{error1}}
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="email">Email:</label>
+                                            <input required minlength="4" name="email" type="email" id="email">
+                                            {{error}}
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="password">Password:</label>
+                                            <input required minlength="4" name="password" type="password" id="password">   
+                                        </p>
+                                        <br>
+                                        <p>
+                                            <label for="Re-password">Re-Password:</label>
+                                            <input required minlength="4" name="repassword" type="password" id="repassword">
+                                            {{error2}}   
+                                        </p>
+                                        <br>
+                                        <input type="submit" class="mainBtn" id="submit" value="Sing up" />
+                                    </form>
+                                </div> <!-- /.contact-form-inner -->
+                                <div id="message"></div>
+                            </div> <!-- /.col-md-7 -->
+                            <!-- <div class="col-md-5">
+                                <div class="googlemap-wrapper">
+                                    <div id="map_canvas" class="map-canvas"></div> -->
+                                </div>
+                            </div> <!-- /.col-md-5 -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /.box-content -->
+                </div> <!-- /.contact-form -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferences.html' %} 
+
+    </body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Private</title>
+        {% include 'shared/_HeaderReferences.html' %} 
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>Your Blog</h2>
+                        <span>wellcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="blog-masonry masonry-true">
+                        {% for filestory in page_obj %}
+                        <div class="post-masonry col-md-4 col-sm-6">
+                            <div class="blog-thumb">
+                                <img style="height: 200px;" src="{{ filestory.image.url }}" alt="">
+                                <div class="overlay-b">
+                                    <div class="overlay-inner">
+                                        <a href="{% url 'story_detail_private' filestory.pk %}" class="fa fa-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-body">
+                                <div class="box-content">
+                                    <h3 class="post-title"><a href="{% url 'story_detail_private' filestory.pk %}">{{ filestory.title }}</a></h3>
+                                    <span class="blog-meta">{{ filestory.timestamp }}</span>
+                                    <p style="height: 50px">
+                                        {{ filestory.text }}
+                                        
+                                        </p>
+                                </div>
+                            </div>
+                        </div> <!-- /.post-masonry -->
+                        {% endfor %}
+                    </div> <!-- /.blog-masonry -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pagination text-center">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                                {% endif %}
+
+                                {% for page in paginator.page_range %}
+                                {% if page == page_obj.number %}
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% else %}
+                                    <li><a style="background-color:rgb(248, 202, 21);" href="?page={{ page }}">{{ page }}</a></li>
+                                {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">بعدی</a></li>
+                                {% endif %}
+                                <!-- <li><a href="javascript:void(0)">1</a></li>
+                                <li><a href="javascript:void(0)" class="active">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">4</a></li>
+                                <li><a href="javascript:void(0)">...</a></li>
+                                <li><a href="javascript:void(0)">11</a></li> -->
+                            </ul>
+                        </div> <!-- /.pagination -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferencesdom.html' %}
+
+    </body>
+</html>

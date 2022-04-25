@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Artcore - Blog Post Single</title>
+        <meta name="description" content="">
+        {% include 'shared/_HeaderReferences.html' %}
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2>{{ story.title }}</h2>
+                        <span>wellcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="blog-image col-md-12">
+                        <img style="height: 700px;" src="{{ story.image.url }}" alt="Blog 1">
+                    </div> <!-- /.blog-image -->
+                    <div class="blog-info col-md-12">
+                        <div class="box-content">
+                            <h2 class="blog-title">{{ story.title }}</h2>
+                            
+                                <form style="background-color:white;padding-top: 0%;padding-bottom: 0%;" action="{% url 'your_profile_page' %}" method="post" class="box-content">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_pk" value="{{story.pk}}">
+                                    <input style="padding: 1%;border: 0%;" type="submit" class="mainBtn" id="submit-comment" value="{{ story.author }}" />
+                                </form> 
+                            
+                            <span class="blog-meta">{{ story.timestamp }}</span>
+                            <p>
+                                {{ story.text }}
+                                <br><br>
+                                {% if request.user == story.author %}
+                                <a style="background-color: black;padding: 1%;color: darkturquoise;border-radius: 5px;" class="btn" href="{% url 'editstory_detail_public' story.pk %}" role="button">Edit Story</a>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div> <!-- /.blog-info -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="comment-heading">Comments </h2>
+                        <div class="box-content">
+                            <div class="comment">
+                                {% for comment in comments %}
+                                <div class="comment-inner">
+                                    <div class="author-avatar">
+                                        <img src="{{ comment.image.url }}" alt="">
+                                    </div>
+                                    <div class="comment-body">
+                                        <form style="background-color:white;padding-top: 0%;" action="{% url 'your_profile_page1' %}" method="post" class="box-content">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="post_pk" value="{{story.pk}}">
+                                            <input type="hidden" name="comment_author" value="{{ comment.author.pk }}">
+                                            <input style="padding: 1%;border: 0%;" type="submit" class="mainBtn" id="submit-comment" value="{{ comment.author }}" />
+                                        </form>
+                                        <span>{{ comment.Date }}</span>
+                                        <p>{{ comment.text }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}  
+                            </div> <!-- /.nested-comment -->
+                        </div> <!-- /.comment -->
+                        
+                        </div> <!-- /.box-content -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+                <div style="margin-left: 12%;margin-right: 12%;" class="row">
+                    <div class="col-md-12 comment-form">
+                        <h2 class="comment-heading">Leave a Comment</h2>
+                        <form action="{% url 'write_comment' %}" method="post" class="box-content">
+                            {% csrf_token %}
+                            <input type="hidden" name="post_pk" value="{{story.pk}}">
+                            <p>
+                                <label for="comment">Your comment:</label>
+                                <textarea required minlength="4" name="comment" id="comment"></textarea>  
+                            </p>
+                             <input type="submit" class="mainBtn" id="submit-comment" value="Submit Comment" />
+                        </form> <!-- /.box-content -->
+                    </div> <!-- /.comment-form -->
+                </div> <!-- /.row -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferencesdom.html' %}
+
+    </body>
+</html>

@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Profile_page</title>
+        {% include 'shared/_HeaderReferences.html' %}
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <section id="pageloader">
+            <div class="loader-item fa fa-spin colored-border"></div>
+        </section> <!-- /#pageloader -->
+
+        {% include 'shared/Header.html' %}
+
+        <div class="content-wrapper">
+            <div class="inner-container container">
+                <div class="row">
+                    <div class="section-header col-md-12">
+                        <h2> My Profile</h2>
+                        <span>welcome</span>
+                    </div> <!-- /.section-header -->
+                </div> <!-- /.row -->
+                <div class="our-team row">
+                    <div class="team-member col-md-6 col-sm-6">
+                        
+                        <img src="{{ site_profile.image.url }}" alt="">
+                        
+                        <div class="box-content">
+                            <h4 class="member-name">{{user_name.username}}</h4>
+                            <br>
+                            <h4 class="member-name">{{ site_profile.firstname }} &nbsp;{{ site_profile.lastname }}</h4>
+                            <br>
+                            <span style="font-size: large;margin-bottom: 2%;"> {{ site_profile.slogan }}</span>
+                            <br>
+                            <p>{{ site_profile.text }}</p>
+                            <p>{{ site_profile.email }}</p>
+                            <a style="background-color: black;padding: 2%;color: darkturquoise;border-radius: 5px;" class="btn" href="http://127.0.0.1:8000/editprofile" role="button">Edit Profile</a>    
+                            
+                        </div>
+                        
+                </div> <!-- /.our-team -->
+                
+                <link href="" class="btn-block" id="submit" value="Change Profile" />
+                <link class="btn-danger" rel="stylesheet" href="" value="Change Profile"> 
+                
+                
+                </div> <!-- /.our-staff -->
+            </div> <!-- /.inner-content -->
+        </div> <!-- /.content-wrapper -->
+
+        {% include 'shared/_JsReferencesdom.html' %}
+        
+    </body>
+</html>
